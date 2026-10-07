@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Esta escena no existe · Todo es posible en Navidad</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;800&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,900,100;1,9..144,800,100&display=swap">
+  <!-- Estilos dentro del archivo: esta página puede servirse desde cualquier ruta -->
+  <style>
+    :root { --wine: #3b0a14; --wine-dark: #2a0710; --gold: #d6a446; --gold-light: #ecc97a; --cream: #fbf6ec; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100svh;
+      display: grid; place-items: center;
+      padding: 32px 16px;
+      background: radial-gradient(ellipse 120% 80% at 50% 0%, #5a1020, var(--wine) 55%, var(--wine-dark));
+      color: var(--cream);
+      font-family: "Figtree", system-ui, sans-serif;
+      text-align: center;
+    }
+    main { max-width: 560px; }
+    .star { width: 56px; height: 56px; fill: var(--gold); margin: 0 auto 20px; display: block; }
+    h1 {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif; font-weight: 900;
+      font-size: clamp(2.4rem, 11vw, 4.2rem); line-height: .95;
+      text-transform: uppercase;
+    }
+    h1 em { display: block; color: var(--gold-light); text-transform: none; font-weight: 800; }
+    p { font-size: 1.1rem; line-height: 1.6; margin: 20px 0 32px; color: rgba(251, 246, 236, .85); }
+    a {
+      display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px;
+      border-radius: 999px; background: var(--gold); color: var(--wine-dark);
+      font-weight: 800; text-decoration: none; text-transform: uppercase; letter-spacing: .06em;
+    }
+    a:focus-visible { outline: 3px solid var(--cream); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l2.6 7.1 7.6.3-6 4.7 2.1 7.3L12 16.7l-6.3 4.2 2.1-7.3-6-4.7 7.6-.3z"/></svg>
+    <h1>Esta escena <em>no existe</em></h1>
+    <p>Parece que un elfo ha cambiado los decorados de sitio. Volvamos al escenario principal.</p>
+    <a href="./" data-home>Volver al inicio</a>
+  </main>
+  <script>
+    // En GitHub Pages la web vive en /nombre-repositorio/: calculamos esa ruta para el enlace.
+    (function () {
+      var link = document.querySelector("[data-home]");
+      if (location.hostname.endsWith("github.io")) {
+        var repo = location.pathname.split("/")[1];
+        link.href = repo ? "/" + repo + "/" : "/";
+      }
+    })();
+  </script>
+</body>
+</html>
