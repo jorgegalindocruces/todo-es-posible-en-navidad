@@ -1,7 +1,4 @@
-# Ojo: los buscadores solo leen el robots.txt de la raíz del dominio.
-# En GitHub Pages (usuario.github.io/repositorio/) este archivo no tiene efecto;
-# empezará a funcionar cuando la web use su dominio propio.
 User-agent: *
 Allow: /
 
-Sitemap: https://jorgegalindocruces.github.io/todo-es-posible-en-navidad/sitemap.xml
+Sitemap: https://todoesposibleteatro.es/sitemap.xml
