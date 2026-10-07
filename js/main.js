@@ -180,6 +180,34 @@ function setupNav() {
   window.addEventListener("scroll", onScroll, { passive: true });
 }
 
+function setupActiveNav() {
+  // Marca en el menú la sección que se está viendo.
+  // Cada sección se asocia al enlace de su id o al de data-nav-section.
+  const links = [...document.querySelectorAll("[data-nav] a[href^='#']")];
+  if (!links.length || !("IntersectionObserver" in window)) return;
+
+  const linkFor = (section) => {
+    const key = section.dataset.navSection || section.id;
+    return links.find((a) => a.getAttribute("href") === `#${key}`);
+  };
+
+  const setActive = (active) => {
+    links.forEach((a) => {
+      if (a === active) a.setAttribute("aria-current", "location");
+      else a.removeAttribute("aria-current");
+    });
+  };
+
+  // Una franja en el centro de la pantalla decide qué sección está "activa"
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) setActive(linkFor(entry.target));
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+
+  document.querySelectorAll("main > section").forEach((section) => observer.observe(section));
+}
+
 function setupStickyCta() {
   // Se oculta mientras se ven la portada, la lista de funciones o el bloque final
   const cta = document.querySelector("[data-sticky-cta]");
@@ -224,6 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupGallery();
   setupVideo();
   setupNav();
+  setupActiveNav();
   setupStickyCta();
   setupReveal();
 });
