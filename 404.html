@@ -47,12 +47,15 @@
     <a href="./" data-home>Volver al inicio</a>
   </main>
   <script>
-    // En GitHub Pages la web vive en /nombre-repositorio/: calculamos esa ruta para el enlace.
+    // En la dirección de GitHub (usuario.github.io/repositorio/) la portada vive en /repositorio/;
+    // con dominio propio, en la raíz.
     (function () {
       var link = document.querySelector("[data-home]");
       if (location.hostname.endsWith("github.io")) {
         var repo = location.pathname.split("/")[1];
         link.href = repo ? "/" + repo + "/" : "/";
+      } else if (location.protocol !== "file:") {
+        link.href = "/";
       }
     })();
   </script>
