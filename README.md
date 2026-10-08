@@ -89,7 +89,7 @@ Usa **solo fotografías autorizadas por el colegio**.
    ```
    Escribe en `alt` una descripción breve de cada foto (es lo que leen los lectores de pantalla).
 
-La galería aparece entre «El viaje» y el bloque final, con el título «Entre bambalinas». Mientras `galleryEnabled` sea `false` (o no haya fotos), no se muestra nada.
+La galería aparece entre «El viaje» y «Dónde», con el título «Entre bambalinas». Mientras `galleryEnabled` sea `false` (o no haya fotos), no se muestra nada.
 
 ## 5. Cambiar el vídeo de una edición anterior
 
