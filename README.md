@@ -201,7 +201,7 @@ En **https://www.bing.com/webmasters** puedes **importar el sitio directamente d
 
 1. Abre **https://search.google.com/test/rich-results**.
 2. Pega la dirección de la web y pulsa **Probar URL**.
-3. Deben aparecer **4 elementos de tipo «Eventos»** sin errores. Es normal que salgan algunos avisos (por ejemplo, que falta la calle o la hora de fin): no impiden que funcione.
+3. Deben aparecer **4 elementos de tipo «Eventos»** sin errores. Es normal que salgan algunos avisos (por ejemplo, que falta la hora de fin): no impiden que funcione.
 
 Vuelve a probarlo cada vez que cambies fechas, precio o enlaces. Si una función se agota, en el bloque JSON-LD de `index.html` cambia su `"availability"` a `"https://schema.org/SoldOut"`; si se cancela, cambia `"eventStatus"` a `"https://schema.org/EventCancelled"`.
 
