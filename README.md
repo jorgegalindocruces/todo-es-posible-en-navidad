@@ -23,6 +23,8 @@ Es una web estática (HTML, CSS y JavaScript): no necesita servidor, base de dat
 
 Casi todo lo que hay que cambiar está al principio de **`js/main.js`**, en el objeto `CONFIG`.
 
+> **Para que un cambio se vea en internet no basta con subirlo a `main`**: hay que subirlo también a la rama `gh-pages`. Los pasos están en [7. Publicar en GitHub Pages](#7-publicar-en-github-pages).
+
 ---
 
 ## 1. Cambiar los enlaces de las entradas
@@ -118,7 +120,10 @@ Se actualiza en la sección de contacto y en el pie. (En `index.html` también a
 
 ## 7. Publicar en GitHub Pages
 
-La web se publica desde la rama **`gh-pages`**. En `main` se trabaja; lo que esté en `gh-pages` es lo que se ve en internet.
+La web que se ve en internet sale de la rama **`gh-pages`**, no de `main`:
+
+- **`main`** es donde se trabaja. Subir algo a `main` **no cambia la web publicada**.
+- **`gh-pages`** es lo que se publica. Es una copia de `main` en el momento en que se decide publicar.
 
 ### Configuración (una sola vez)
 
@@ -128,14 +133,28 @@ La web se publica desde la rama **`gh-pages`**. En `main` se trabaja; lo que est
 
 ### Publicar cambios
 
-Cuando los cambios estén listos en `main`, súbelos también a `gh-pages`:
+1. **Sube los cambios a `main`** y comprueba que están bien (puedes probarlos antes en tu ordenador, ver [Probar en tu ordenador](#probar-en-tu-ordenador)):
 
-```sh
-git push origin main
-git push origin main:gh-pages
-```
+   ```sh
+   git push origin main
+   ```
 
-En uno o dos minutos la web estará actualizada en **https://todoesposibleteatro.es/** (la dirección antigua, `jorgegalindocruces.github.io/todo-es-posible-en-navidad/`, redirige sola al dominio).
+2. **Copia `main` en `gh-pages`**. Este es el paso que publica:
+
+   ```sh
+   git push origin main:gh-pages
+   ```
+
+3. **Comprueba que se ha publicado.** En GitHub, pestaña **Actions**, aparece una ejecución llamada **«pages build and deployment»** con el mensaje de tu último commit. Cuando tenga el tic verde (suele tardar menos de un minuto), la web ya está actualizada.
+
+4. **Mírala en https://todoesposibleteatro.es/**. Si todavía ves la versión anterior, recarga sin caché (**Ctrl+Shift+R**, o **Cmd+Shift+R** en Mac) o espera un par de minutos. La dirección antigua, `jorgegalindocruces.github.io/todo-es-posible-en-navidad/`, redirige sola al dominio.
+
+#### Si algo falla
+
+- **El paso 2 da error `rejected` / `non-fast-forward`**: alguien ha cambiado `gh-pages` directamente y `main` no tiene esos cambios. **No uses `--force`**, porque borrarías esos cambios de la web. Trae primero `gh-pages` a `main` (`git pull origin gh-pages`, revisa el resultado y súbelo a `main`) y repite el paso 2.
+- **La ejecución de Actions sale en rojo**: abre la ejecución para ver el error. La web sigue mostrando la última versión que se publicó bien.
+
+No hagas cambios directamente en `gh-pages`: hazlos siempre en `main` y publícalos con el paso 2.
 
 El archivo `CNAME` tiene que estar en la rama `gh-pages`; como se publica copiando `main`, basta con no borrarlo de `main`.
 
