@@ -208,6 +208,61 @@ function setupActiveNav() {
   document.querySelectorAll("main > section").forEach((section) => observer.observe(section));
 }
 
+function setupSectionSteps() {
+  // Botones de la cabecera para pasar a la sección anterior o siguiente.
+  // Las paradas son las secciones con data-step (y visibles), en el orden de la página.
+  const group = document.querySelector("[data-steps]");
+  const prev = document.querySelector("[data-step-prev]");
+  const next = document.querySelector("[data-step-next]");
+  if (!group || !prev || !next || !("IntersectionObserver" in window)) return;
+
+  const steps = [...document.querySelectorAll("main > section[data-step]")].filter((s) => !s.hidden);
+  if (steps.length < 2) return;
+  group.hidden = false;
+
+  let current = 0;
+
+  const update = () => {
+    const before = steps[current - 1];
+    const after = steps[current + 1];
+    prev.disabled = !before;
+    next.disabled = !after;
+    prev.setAttribute("aria-label", before ? `Sección anterior: ${before.dataset.step}` : "Sección anterior");
+    next.setAttribute("aria-label", after ? `Sección siguiente: ${after.dataset.step}` : "Sección siguiente");
+    prev.title = prev.getAttribute("aria-label");
+    next.title = next.getAttribute("aria-label");
+  };
+
+  const go = (index) => {
+    const target = steps[index];
+    if (!target) return;
+    current = index;
+    update();
+    target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+  };
+
+  prev.addEventListener("click", () => go(current - 1));
+  next.addEventListener("click", () => go(current + 1));
+
+  // La misma franja central que usa el menú decide en qué sección estamos.
+  // Las secciones sin data-step (p. ej. la sinopsis) cuentan como la parada anterior.
+  const all = [...document.querySelectorAll("main > section")];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const position = all.indexOf(entry.target);
+      const owner = all.slice(0, position + 1).reverse().find((s) => steps.includes(s));
+      if (owner) {
+        current = steps.indexOf(owner);
+        update();
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+
+  all.forEach((section) => observer.observe(section));
+  update();
+}
+
 function setupStickyCta() {
   // Se oculta mientras se ven la portada, la lista de funciones o el bloque final
   const cta = document.querySelector("[data-sticky-cta]");
@@ -253,6 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupVideo();
   setupNav();
   setupActiveNav();
+  setupSectionSteps();
   setupStickyCta();
   setupReveal();
 });

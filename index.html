@@ -247,6 +247,15 @@
         <span class="brand__text">Todo es posible<br><em>en Navidad</em></span>
       </a>
 
+      <div class="section-steps" role="group" aria-label="Recorrer las secciones" data-steps hidden>
+        <button class="section-steps__btn" type="button" data-step-prev aria-label="Sección anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+        <button class="section-steps__btn" type="button" data-step-next aria-label="Sección siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle>
         <span class="nav-toggle__bars" aria-hidden="true"></span>
         <span class="nav-toggle__label">Menú</span>
@@ -268,7 +277,7 @@
   <main id="contenido">
 
     <!-- ============ HERO ============ -->
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <section class="hero" id="inicio" data-step="Inicio" aria-labelledby="hero-title">
       <div class="hero__lights" aria-hidden="true">
         <svg viewBox="0 0 1200 80" preserveAspectRatio="none" class="lights__wire"><path d="M0 10 Q150 60 300 18 T600 18 T900 18 T1200 10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         <ul class="lights__bulbs">
@@ -329,7 +338,7 @@
     </section>
 
     <!-- ============ ENTRADA A LA OBRA ============ -->
-    <section class="section section--forest prelude" id="la-obra" aria-labelledby="prelude-title">
+    <section class="section section--forest prelude" id="la-obra" data-step="La obra" aria-labelledby="prelude-title">
       <div class="snow" aria-hidden="true"></div>
       <div class="container prelude__inner reveal">
         <h2 class="prelude__title" id="prelude-title">¿Qué pasa cuando llega la Navidad y tu familia ya no es como antes?</h2>
@@ -372,7 +381,7 @@
     </section>
 
     <!-- ============ FUNCIONES ============ -->
-    <section class="section section--cream" id="funciones" aria-labelledby="funciones-title">
+    <section class="section section--cream" id="funciones" data-step="Funciones" aria-labelledby="funciones-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">Diciembre</p>
@@ -469,7 +478,7 @@
     </section>
 
     <!-- ============ HISTORIA / TIMELINE ============ -->
-    <section class="section section--paper" id="historia" aria-labelledby="historia-title">
+    <section class="section section--paper" id="historia" data-step="La historia" aria-labelledby="historia-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">La saga</p>
@@ -535,7 +544,7 @@
     </section>
 
     <!-- ============ COMUNIDAD ============ -->
-    <section class="section section--cream" id="proyecto" aria-labelledby="proyecto-title">
+    <section class="section section--cream" id="proyecto" data-step="El proyecto" aria-labelledby="proyecto-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">El proyecto</p>
@@ -575,7 +584,7 @@
     </section>
 
     <!-- ============ EL VIAJE ============ -->
-    <section class="section section--paper trip" id="viaje" aria-labelledby="viaje-title">
+    <section class="section section--paper trip" id="viaje" data-step="El viaje" aria-labelledby="viaje-title">
       <div class="container">
         <div class="trip__grid">
           <header class="trip__text reveal">
@@ -653,7 +662,7 @@
     </section>
 
     <!-- ============ GALERÍA (oculta hasta activarla en CONFIG) ============ -->
-    <section class="section section--cream gallery" id="galeria" aria-labelledby="galeria-title" hidden data-gallery>
+    <section class="section section--cream gallery" id="galeria" data-step="Galería" aria-labelledby="galeria-title" hidden data-gallery>
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">Fotos</p>
@@ -666,7 +675,7 @@
     </section>
 
     <!-- ============ DÓNDE ============ -->
-    <section class="section section--cream where" id="donde" aria-labelledby="donde-title">
+    <section class="section section--cream where" id="donde" data-step="Dónde" aria-labelledby="donde-title">
       <div class="container where__grid">
         <header class="where__text reveal">
           <p class="eyebrow">Dónde</p>
@@ -708,7 +717,7 @@
     </section>
 
     <!-- ============ FINAL / ENTRADAS ============ -->
-    <section class="section section--wine finale" id="entradas" aria-labelledby="entradas-title" data-nav-section="lista-funciones">
+    <section class="section section--wine finale" id="entradas" data-step="Entradas" aria-labelledby="entradas-title" data-nav-section="lista-funciones">
       <div class="hero__stars hero__stars--soft" aria-hidden="true">
         <span style="--x:8%;--y:12%;--d:.4s"></span>
         <span style="--x:88%;--y:18%;--d:1.6s"></span>
